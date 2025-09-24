@@ -1,12 +1,32 @@
-import { z } from 'zod'
+import { IsString, IsNumber, IsOptional, IsArray, IsDateString } from 'class-validator';
 
-export const createGameSchema = z.object({
-  name: z.string().min(1),
-  tags: z.array(z.string()),
-  publisher: z.string().min(1),
-  studio: z.string().min(1),
-  price: z.number().min(0),
-  review: z.number().min(0).max(5).optional()
-})
+export class CreateGameDto {
+  @IsString()
+  title: string;
 
-export type CreateGameDto = z.infer<typeof createGameSchema>
+  @IsString()
+  description: string;
+
+  @IsDateString()
+  launchDate: string; // usa string no DTO, será convertido depois para Date
+
+  @IsArray()
+  @IsString({ each: true })
+  tags: string[];
+
+  @IsString()
+  publisher: string;
+
+  @IsString()
+  studio: string;
+
+  @IsNumber()
+  price: number;
+
+  @IsOptional()
+  @IsNumber()
+  review?: number;
+
+  @IsDateString()
+  releaseDate: string;
+}

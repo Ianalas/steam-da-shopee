@@ -15,4 +15,48 @@ datasource db {
 }
 
 
+model Game {
+  id          Int      @id @default(autoincrement())
+  title       String   @unique
+  description String
+  launchDate  DateTime
+  tags        String[]
+  publisher   String
+  studio      String
+  price       Float
+  review      Float?
+  releaseDate DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  reviews     Review[]
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  gameId    Int
+  content   String
+  rating    Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  game Game @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  @@index([gameId])
+}
+
+
+/*
+  id: z.uuid(),
+  title: z.string().min(1),
+  description: z.string().min(36),
+  launchDate: z.date(),
+  tags: z.array(z.string()),
+  publisher: z.string().min(1),
+  studio: z.string().min(1),
+  price: z.number().min(0),
+  review: z.number().min(0).max(5).optional(),
+  createdAt: z.date(),
+  updatedAt: z.date() 
+*/
 
