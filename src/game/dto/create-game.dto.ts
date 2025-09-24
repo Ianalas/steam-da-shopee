@@ -1,4 +1,10 @@
-import { IsString, IsNumber, IsOptional, IsArray, IsDateString } from 'class-validator';
+import { 
+  IsString, 
+  IsNumber, 
+  IsOptional, 
+  IsArray, 
+  IsDateString 
+} from 'class-validator';
 
 export class CreateGameDto {
   @IsString()
@@ -8,7 +14,7 @@ export class CreateGameDto {
   description: string;
 
   @IsDateString()
-  launchDate: string; // usa string no DTO, será convertido depois para Date
+  launchDate: string; // recebido como string ISO
 
   @IsArray()
   @IsString({ each: true })
@@ -28,5 +34,5 @@ export class CreateGameDto {
   review?: number;
 
   @IsDateString()
-  releaseDate: string;
+  releaseDate: string; // também string ISO
 }

@@ -1,4 +1,10 @@
-import { IsString, IsNumber, IsOptional, IsArray, IsDateString } from 'class-validator';
+import { 
+  IsString, 
+  IsNumber, 
+  IsOptional, 
+  IsArray, 
+  IsDateString 
+} from 'class-validator';
 
 export class UpdateGameDto {
   @IsOptional()
@@ -11,7 +17,7 @@ export class UpdateGameDto {
 
   @IsOptional()
   @IsDateString()
-  launchDate?: string; // string para ser convertido em Date depois
+  launchDate?: string; // recebido como string ISO, convertido para Date depois
 
   @IsOptional()
   @IsArray()
@@ -36,5 +42,5 @@ export class UpdateGameDto {
 
   @IsOptional()
   @IsDateString()
-  releaseDate?: string;
+  releaseDate?: string; // também string ISO
 }
