@@ -9,7 +9,7 @@ API que simula algumas funcionalidades básicas da Steam, desenvolvida com NestJ
 ### Games
 
 #### GET /games/v1/api
-Lista todos os jogos cadastrados com suas reviews.
+> Lista todos os jogos cadastrados com suas reviews.
 
 Exemplo de resposta:
 ```json
@@ -32,12 +32,12 @@ Exemplo de resposta:
 ```
 
 #### GET /games/v1/api/:id
-Busca um jogo específico pelo ID.
+> Busca um jogo específico pelo ID.
 
 #### POST /games/v1/api
-Cria um novo jogo.
+> Cria um novo jogo.
 
-Payload de exemplo:
+> Payload de exemplo:
 ```json
 {
   "title": "Super Mario Odyssey",
@@ -52,23 +52,23 @@ Payload de exemplo:
 ```
 
 #### PATCH /games/v1/api/:id
-Atualiza um jogo existente.
+> Atualiza um jogo existente.
 
 #### DELETE /games/v1/api/:id
-Remove um jogo do sistema.
+> Remove um jogo do sistema.
 
 ### Reviews
 
 #### GET /reviews/v1/api
-Lista todas as reviews cadastradas.
+> Lista todas as reviews cadastradas.
 
 #### GET /reviews/v1/api/:id
-Busca uma review específica pelo ID.
+> Busca uma review específica pelo ID.
 
 #### POST /reviews/v1/api
-Cria uma nova review para um jogo.
+> Cria uma nova review para um jogo.
 
-Payload de exemplo:
+> Payload de exemplo:
 ```json
 {
   "description": "Um dos melhores jogos de plataforma 3D!",
@@ -79,23 +79,23 @@ Payload de exemplo:
 ```
 
 #### PATCH /reviews/v1/api/:id
-Atualiza uma review existente.
+> Atualiza uma review existente.
 
 #### DELETE /reviews/v1/api/:id
-Remove uma review do sistema.
+> Remove uma review do sistema.
 
 ### Users
 
 #### GET /users/v1/api
-Lista todos os usuários cadastrados.
+> Lista todos os usuários cadastrados.
 
 #### GET /users/v1/api/:id
-Busca um usuário específico pelo ID.
+> Busca um usuário específico pelo ID.
 
 #### POST /users/v1/api
-Cria um novo usuário.
+> Cria um novo usuário.
 
-Payload de exemplo:
+> Payload de exemplo:
 ```json
 {
   "name": "Mario Fan"
@@ -103,10 +103,10 @@ Payload de exemplo:
 ```
 
 #### PATCH /users/v1/api/:id
-Atualiza um usuário existente.
+> Atualiza um usuário existente.
 
 #### DELETE /users/v1/api/:id
-Remove um usuário do sistema.
+> Remove um usuário do sistema.
 
 ## Configuração do Projeto
 
@@ -156,27 +156,5 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
-```
-
-## Run tests
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
 ```
 
