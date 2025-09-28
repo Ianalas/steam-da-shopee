@@ -11,12 +11,27 @@ export class GameService {
   }
 
   async findAll(): Promise<Game[]> {
-    return this.prisma.game.findMany();
+    return this.prisma.game.findMany({
+      include: {
+        reviews: {
+          include: {
+            user: true
+          }
+        }
+      }
+    });
   }
 
   async findOne(userWhereUniqueInput: Prisma.GameWhereUniqueInput): Promise<Game | null> {
     return this.prisma.game.findUnique({
-      where: userWhereUniqueInput
+      where: userWhereUniqueInput,
+      include: {
+        reviews: {
+          include: {
+            user: true
+          }
+        }
+      }
     })
   }
 

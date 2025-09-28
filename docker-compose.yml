@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:16
+    container_name: postgres_steam-da-shopee-db
+    restart: always
+    environment:
+      POSTGRES_DB: steam-da-shopee-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5442:5432"
+    volumes:
+      - postgres_games_data:/var/lib/postgresql/data
+    networks:
+      - my_network
+
+volumes:
+  postgres_games_data:
+
+networks:
+  my_network:
+    driver: bridge

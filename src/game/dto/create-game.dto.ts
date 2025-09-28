@@ -1,9 +1,9 @@
 import { 
   IsString, 
   IsNumber, 
-  IsOptional, 
   IsArray, 
-  IsDateString 
+  IsDateString,
+  IsUrl
 } from 'class-validator';
 
 export class CreateGameDto {
@@ -14,7 +14,10 @@ export class CreateGameDto {
   description: string;
 
   @IsDateString()
-  launchDate: string; // recebido como string ISO
+  launchDate: string;
+
+  @IsUrl()
+  urlPicture: string;
 
   @IsArray()
   @IsString({ each: true })
@@ -28,11 +31,4 @@ export class CreateGameDto {
 
   @IsNumber()
   price: number;
-
-  @IsOptional()
-  @IsNumber()
-  review?: number;
-
-  @IsDateString()
-  releaseDate: string; // também string ISO
 }

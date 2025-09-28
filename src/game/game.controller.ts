@@ -23,7 +23,7 @@ export class GameController {
 
   @Get(':id')
   findOne(@Param('id') id: string): Promise<GameModel | null> {
-    return this.gameService.findOne({ id: Number(id)})
+    return this.gameService.findOne({ id })
   }
 
   @Post()
@@ -31,22 +31,22 @@ export class GameController {
     return this.gameService.create({
       ...gameData,
       launchDate: new Date(gameData.launchDate),
-      releaseDate: new Date(gameData.releaseDate)
+      reviews: {
+        create: []
+      }
     })
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() gameData: UpdateGameDto): Promise<GameModel> {
     return this.gameService.update({
-      where: {id: Number(id)},
-      data: {
-        ...gameData,
-      }
+      where: { id },
+      data: gameData
     })
   }
 
   @Delete(':id')
   remove(@Param('id') id: string): Promise<GameModel> {
-    return this.gameService.remove({id: Number(id)});
+    return this.gameService.remove({ id });
   }
 }

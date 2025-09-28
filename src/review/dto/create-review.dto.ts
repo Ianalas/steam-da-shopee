@@ -12,19 +12,17 @@ import{
 export class CreateReviewDto {
     @IsString()
     @IsNotEmpty()
-    @Length(10, 2000)
-    readonly content: string;
+    description: string;
 
     @IsNumber()
     @Min(0)
-    @Max(5)
-    readonly rating: number;
+    timePlayed: number;
 
-    @IsInt()
+    @IsString()
     @IsNotEmpty()
-    readonly gameId: number;
+    gameId: string;
 
-    @IsOptional()
-    @IsInt()
-    readonly userId : number;
+    @IsString()
+    @IsNotEmpty()
+    userId: string;
 }
